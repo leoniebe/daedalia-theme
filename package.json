@@ -1,0 +1,12 @@
+{
+	"name": "daedalia-thema",
+	"version": "0.1.0",
+	"private": true,
+	"description": "Licht thema voor de Daedalia-pagebuilder, met Daedalia meegeleverd.",
+	"license": "GPL-3.0-or-later",
+	"type": "module",
+	"scripts": {
+		"bundel": "node bundel.mjs",
+		"bundel:alleen-kopie": "node bundel.mjs --zonder-zip"
+	}
+}
