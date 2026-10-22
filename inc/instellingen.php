@@ -1,6 +1,6 @@
 <?php
 /**
- * The theme's settings: Instellingen › Daedalia-thema. Every part can be switched off on its own.
+ * The theme's settings: Weergave › Daedalia-thema. Every part can be switched off on its own.
  *
  * @package DaedaliaThema
  */
@@ -65,7 +65,7 @@ function daedalia_thema_on( string $key ): bool {
  * The settings page.
  */
 function daedalia_thema_settings_menu(): void {
-	add_options_page( __( 'Daedalia-thema', 'daedalia-thema' ), __( 'Daedalia-thema', 'daedalia-thema' ), 'manage_options', 'daedalia-thema', 'daedalia_thema_settings_page' );
+	add_theme_page( __( 'Daedalia-thema', 'daedalia-thema' ), __( 'Daedalia-thema', 'daedalia-thema' ), 'manage_options', 'daedalia-thema', 'daedalia_thema_settings_page' );
 }
 add_action( 'admin_menu', 'daedalia_thema_settings_menu' );
 
@@ -84,7 +84,7 @@ function daedalia_thema_settings_save(): void {
 	}
 	update_option( 'daedalia_thema_instellingen', $values, true );
 
-	wp_safe_redirect( add_query_arg( 'opgeslagen', '1', admin_url( 'options-general.php?page=daedalia-thema' ) ) );
+	wp_safe_redirect( add_query_arg( 'opgeslagen', '1', admin_url( 'themes.php?page=daedalia-thema' ) ) );
 	exit;
 }
 add_action( 'admin_init', 'daedalia_thema_settings_save' );

@@ -6,7 +6,7 @@ Een licht, klassiek WordPress-thema voor de Daedalia-pagebuilder. Het thema doet
 - **Kleuren, lettertypen, logo, iconen en het formaat van de site** stel je in via Daedalia › Site-instellingen. Het thema leest of laadt daar niets van.
 - **CSS van het thema:** alleen een kleine reset en de skip link, samen minder dan 2 kB.
 - **Opgeschoond:** het thema laat het emoji-script en wp-embed weg. De bloklibrary en globale stijlen laden alleen op pagina's met blokken, en altijd bij winkelwagen, afrekenen en mijn account. Wil je een onderdeel houden? Gebruik het filter `daedalia_thema/afslanken`, bijvoorbeeld `add_filter( 'daedalia_thema/afslanken', fn( $d ) => [ 'blokken' => false ] + $d );`.
-- **Instellingen › Daedalia-thema:** elk onderdeel staat los aan of uit, met uitleg. Wat iets kan breken staat standaard uit.
+- **Weergave › Daedalia-thema:** elk onderdeel staat los aan of uit, met uitleg. Wat iets kan breken staat standaard uit.
   - **Afslanken:** emoji, wp-embed, blokstijlen alleen waar nodig, overbodige head-regels (RSD, WLW, korte link), geen WordPress-versie in de HTML, geen dashicons voor bezoekers, geen cart-fragments van WooCommerce, WooCommerce-CSS en -JS alleen op winkelpagina’s. Standaard uit: jQuery Migrate weg.
   - **Beveiliging:** XML-RPC uit (403), de REST-gebruikerslijst dicht voor gasten, ?author=1 verraadt geen naam, één inlogmelding voor naam en wachtwoord, inlogpogingen beperkt (5 per naam of 20 per adres, dan 15 minuten), geen bestandsbewerker.
   - **Headers:** X-Content-Type-Options, Referrer-Policy, X-Frame-Options SAMEORIGIN (de editor van Daedalia blijft werken), Permissions-Policy (camera, microfoon, locatie uit; betalen niet). Standaard uit: CSP in meldmodus (filter `daedalia_thema/csp`) en HSTS (alleen op https).

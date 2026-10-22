@@ -1,7 +1,7 @@
 <?php
 /**
  * Security: closing what attackers use, limiting login attempts, and security headers. Each part
- * is a setting (Instellingen › Daedalia-thema); what could break something is off by default.
+ * is a setting (Weergave › Daedalia-thema); what could break something is off by default.
  *
  * @package DaedaliaThema
  */

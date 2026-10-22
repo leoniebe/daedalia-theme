@@ -1,7 +1,7 @@
 <?php
 /**
  * Leave out what WordPress (and WooCommerce) load by default but a Daedalia site does not use.
- * Each part is a setting (Instellingen › Daedalia-thema); the filter daedalia_thema/afslanken can
+ * Each part is a setting (Weergave › Daedalia-thema); the filter daedalia_thema/afslanken can
  * still keep one (return false for its key).
  *
  * @package DaedaliaThema

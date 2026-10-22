@@ -63,7 +63,7 @@ function daedalia_thema_assets(): void {
 }
 add_action( 'wp_enqueue_scripts', 'daedalia_thema_assets', 5 );
 
-// Settings (Instellingen › Daedalia-thema), trimming, security and headers: each part on or off.
+// Settings (Weergave › Daedalia-thema), trimming, security and headers: each part on or off.
 require_once __DIR__ . '/inc/instellingen.php';
 require_once __DIR__ . '/inc/afslanken.php';
 require_once __DIR__ . '/inc/beveiliging.php';
