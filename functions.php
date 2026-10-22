@@ -12,7 +12,7 @@
 
 defined( 'ABSPATH' ) || exit;
 
-define( 'DAEDALIA_THEMA_VERSION', '0.1.0' );
+define( 'DAEDALIA_THEMA_VERSION', '0.2.0' );
 
 // Daedalia bundled in this theme, unless the plugin already runs.
 if ( ! defined( 'DAEDALIA_VERSION' ) && is_readable( __DIR__ . '/daedalia/daedalia.php' ) ) {
@@ -63,64 +63,10 @@ function daedalia_thema_assets(): void {
 }
 add_action( 'wp_enqueue_scripts', 'daedalia_thema_assets', 5 );
 
-/**
- * Leave out what WordPress loads by default but a Daedalia site does not use:
- * the emoji script and styles, wp-embed, and the block library and global styles
- * on pages without blocks. Each part can be kept with the filter
- * `daedalia_thema/afslanken` (return false for a key to keep it).
- */
-function daedalia_thema_trim(): void {
-	/**
-	 * Which default WordPress output the theme removes.
-	 *
-	 * @param array<string, bool> $parts emoji, embed, blokken.
-	 */
-	$parts = (array) apply_filters(
-		'daedalia_thema/afslanken',
-		array(
-			'emoji'   => true,
-			'embed'   => true,
-			'blokken' => true,
-		)
-	);
-
-	if ( ! empty( $parts['emoji'] ) ) {
-		remove_action( 'wp_head', 'print_emoji_detection_script', 7 );
-		remove_action( 'wp_print_styles', 'print_emoji_styles' );
-		remove_action( 'admin_print_scripts', 'print_emoji_detection_script' );
-		remove_action( 'admin_print_styles', 'print_emoji_styles' );
-		remove_filter( 'the_content_feed', 'wp_staticize_emoji' );
-		remove_filter( 'comment_text_rss', 'wp_staticize_emoji' );
-		remove_filter( 'wp_mail', 'wp_staticize_emoji_for_email' );
-		add_filter( 'emoji_svg_url', '__return_false' );
-	}
-
-	if ( ! empty( $parts['embed'] ) ) {
-		remove_action( 'wp_head', 'wp_oembed_add_host_js' );
-		add_action( 'wp_footer', static fn() => wp_dequeue_script( 'wp-embed' ), 1 );
-	}
-
-	if ( ! empty( $parts['blokken'] ) ) {
-		add_action( 'wp_enqueue_scripts', 'daedalia_thema_trim_block_styles', 100 );
-	}
-}
-add_action( 'init', 'daedalia_thema_trim' );
-
-/**
- * Block library and global styles only where the content has blocks.
- */
-function daedalia_thema_trim_block_styles(): void {
-	if ( is_singular() && has_blocks( get_queried_object_id() ) ) {
-		return;
-	}
-	// WooCommerce's own blocks (cart, checkout) need their styles.
-	if ( function_exists( 'is_cart' ) && ( is_cart() || is_checkout() || is_account_page() ) ) {
-		return;
-	}
-	foreach ( array( 'wp-block-library', 'wp-block-library-theme', 'global-styles', 'classic-theme-styles', 'core-block-supports' ) as $handle ) {
-		wp_dequeue_style( $handle );
-	}
-}
+// Settings (Instellingen › Daedalia-thema), trimming, security and headers: each part on or off.
+require_once __DIR__ . '/inc/instellingen.php';
+require_once __DIR__ . '/inc/afslanken.php';
+require_once __DIR__ . '/inc/beveiliging.php';
 
 /**
  * Without Daedalia the theme still works, but says what is missing.
