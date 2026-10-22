@@ -146,6 +146,16 @@ function daedalia_thema_built( int $post_id ): bool {
 }
 
 /**
+ * Whether the theme prints the title of a page or post without Daedalia content: not in Daedalia's
+ * editor, and not when the page hides it (Pagina-instellingen › Titel van het thema).
+ *
+ * @param int $post_id Post ID.
+ */
+function daedalia_thema_show_title( int $post_id ): bool {
+	return ! daedalia_thema_has_builder() || ! class_exists( '\Daedalia\Page_Title' ) || \Daedalia\Page_Title::show( $post_id );
+}
+
+/**
  * WooCommerce: the theme's own wrapper (main is opened in the template).
  */
 remove_action( 'woocommerce_before_main_content', 'woocommerce_output_content_wrapper', 10 );

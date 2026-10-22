@@ -18,7 +18,9 @@ get_header();
 		else :
 			?>
 			<article <?php post_class( 'daedalia-thema-inhoud' ); ?>>
-				<h1><?php the_title(); ?></h1>
+				<?php if ( daedalia_thema_show_title( get_the_ID() ) ) : ?>
+					<h1><?php the_title(); ?></h1>
+				<?php endif; ?>
 				<p><time datetime="<?php echo esc_attr( get_the_date( 'c' ) ); ?>"><?php echo esc_html( get_the_date() ); ?></time></p>
 				<?php
 				if ( has_post_thumbnail() ) {
