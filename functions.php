@@ -12,7 +12,7 @@
 
 defined( 'ABSPATH' ) || exit;
 
-define( 'DAEDALIA_THEMA_VERSION', '0.2.0' );
+define( 'DAEDALIA_THEMA_VERSION', '0.2.1' );
 
 // Daedalia bundled in this theme, unless the plugin already runs.
 if ( ! defined( 'DAEDALIA_VERSION' ) && is_readable( __DIR__ . '/daedalia/daedalia.php' ) ) {

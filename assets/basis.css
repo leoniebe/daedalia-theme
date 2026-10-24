@@ -10,7 +10,7 @@ input,button,textarea,select{font:inherit}
 .daedalia-thema-skiplink:focus{top:8px;outline:2px solid currentColor;outline-offset:2px}
 .screen-reader-text{position:absolute!important;width:1px;height:1px;margin:-1px;padding:0;overflow:hidden;clip-path:inset(50%);white-space:nowrap;border:0}
 .screen-reader-text:focus{position:static!important;width:auto;height:auto;margin:0;clip-path:none;white-space:normal}
-.daedalia-thema-kop,.daedalia-thema-voet,.daedalia-thema-inhoud{width:min(100% - 2 * var(--daedalia-zijmarge,16px),var(--daedalia-inhoud,1200px));margin-inline:auto}
-.daedalia-thema-kop{display:flex;flex-wrap:wrap;gap:16px;align-items:center;justify-content:space-between;padding-block:16px}
+.daedalia-thema-kop,.daedalia-thema-voet,.daedalia-thema-inhoud{width:min(100% - 2 * var(--daedalia-zijmarge,16px),var(--daedalia-inhoud,1200px));margin-left:auto;margin-right:auto}
+.daedalia-thema-kop{display:flex;flex-wrap:wrap;gap:16px;align-items:center;justify-content:space-between;padding-top:16px;padding-bottom:16px}
 .daedalia-thema-kop ul,.daedalia-thema-voet ul{display:flex;flex-wrap:wrap;gap:8px 20px;margin:0;padding:0;list-style:none}
-.daedalia-thema-voet{padding-block:32px}
+.daedalia-thema-voet{padding-top:32px;padding-bottom:32px}
