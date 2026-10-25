@@ -69,8 +69,9 @@ jobs:
           $WP option update permalink_structure '/%postname%/'
           ln -s "$GITHUB_WORKSPACE" /tmp/wordpress/wp-content/themes/daedalia-thema
           $WP theme activate daedalia-thema
-          $WP post create --post_type=post --post_status=publish --post_title='Bericht' --post_content='Tekst.'
-      - name: Home, a post, a page, search and a 404 render without PHP errors
+          post=$($WP post create --post_type=post --post_status=publish --post_title='Bericht' --post_content='Tekst.' --porcelain)
+          $WP comment create --comment_post_ID="$post" --comment_content='Een reactie.' --comment_author='Lezer' --comment_approved=1
+      - name: Home, a post with a comment, a page, search and a 404 render without PHP errors
         run: |
           php -S 127.0.0.1:8080 -t /tmp/wordpress >/tmp/server.log 2>&1 &
           sleep 2
