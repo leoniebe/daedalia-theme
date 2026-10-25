@@ -11,15 +11,21 @@ const source = path.resolve( process.env.DAEDALIA_BRON || path.join( here, '..',
 const target = path.join( here, 'daedalia' );
 const version = ( fs.readFileSync( path.join( here, 'style.css' ), 'utf8' ).match( /Version:\s*([\d.]+)/ ) || [] )[ 1 ] || '0.0.0';
 
-// Never in a bundle: repository files anywhere, and at the top level the editor's sources and
-// tooling (the built editor is in assets/editor/), tests, docs and builds.
-const SKIP = [ '.git', '.github', 'node_modules', '.gitignore', '.gitattributes', '.editorconfig' ];
-const SKIP_TOP = [ 'dist', 'docs', 'editor', 'tests', 'phpcs.xml', 'phpcs.xml.dist', 'phpstan.neon', 'composer.lock' ];
-
 if ( ! fs.existsSync( path.join( source, 'daedalia.php' ) ) ) {
 	console.error( `Daedalia niet gevonden in ${ source }. Zet DAEDALIA_BRON naar de map van de plugin.` );
 	process.exit( 1 );
 }
+
+// Never in a bundle: repository files anywhere; at the top level what Daedalia's .gitattributes
+// marks export-ignore (editor sources, tests, developer tooling: the same as its release zip), and
+// what is not in its repository at all (Composer's vendor/, builds, docs).
+const SKIP = [ '.git', '.github', 'node_modules', '.gitignore', '.gitattributes', '.editorconfig' ];
+const exportIgnored = fs.readFileSync( path.join( source, '.gitattributes' ), 'utf8' )
+	.split( /\r?\n/ )
+	.map( ( line ) => line.match( /^\/([^\s/]+)\s+export-ignore\s*$/ ) )
+	.filter( Boolean )
+	.map( ( match ) => match[ 1 ] );
+const SKIP_TOP = [ ...exportIgnored, 'vendor', 'dist', 'docs', '.phpunit.result.cache' ];
 if ( ! fs.existsSync( path.join( source, 'assets', 'editor', 'editor.js' ) ) ) {
 	console.error( 'De editor is nog niet gebouwd (assets/editor/editor.js ontbreekt). Draai eerst npm run build in daedalia/editor.' );
 	process.exit( 1 );
@@ -31,7 +37,7 @@ const copy = ( from, to ) => {
 	fs.mkdirSync( to, { recursive: true } );
 	const top = from === source;
 	for ( const entry of fs.readdirSync( from, { withFileTypes: true } ) ) {
-		if ( SKIP.includes( entry.name ) || ( top && SKIP_TOP.includes( entry.name ) ) || ( top && entry.name.endsWith( '.md' ) && entry.name !== 'README.md' ) ) {
+		if ( SKIP.includes( entry.name ) || ( top && SKIP_TOP.includes( entry.name ) ) ) {
 			continue;
 		}
 		const a = path.join( from, entry.name );
@@ -64,7 +70,10 @@ const zip = path.join( dist, `daedalia-thema-${ version }.zip` );
 fs.rmSync( zip, { force: true } );
 const stage = fs.mkdtempSync( path.join( dist, 'tmp-' ) );
 const root = path.join( stage, 'daedalia-thema' );
-const THEME_SKIP = [ '.git', 'node_modules', 'dist', 'bundel.mjs', 'package.json', 'package-lock.json', 'tests' ];
+const THEME_SKIP = [
+	'.git', 'node_modules', 'vendor', 'dist', 'tests', 'bundel.mjs', 'package.json', 'package-lock.json',
+	'composer.json', 'composer.lock', 'phpcs.xml.dist', 'phpstan.neon.dist',
+];
 const copyTheme = ( from, to ) => {
 	fs.mkdirSync( to, { recursive: true } );
 	for ( const entry of fs.readdirSync( from, { withFileTypes: true } ) ) {
