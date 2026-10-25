@@ -119,7 +119,7 @@ function daedalia_thema_trim_block_styles(): void {
 }
 
 /**
- * jQuery without jQuery Migrate on the front (only when switched on: old plugins may need it).
+ * Loads jQuery without jQuery Migrate on the front (only when switched on: old plugins may need it).
  *
  * @param WP_Scripts $scripts Scripts.
  */

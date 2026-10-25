@@ -11,7 +11,15 @@ defined( 'ABSPATH' ) || exit;
 <footer class="daedalia-thema-voet">
 	<?php if ( has_nav_menu( 'voetmenu' ) ) : ?>
 		<nav aria-label="<?php esc_attr_e( 'Menu in de footer', 'daedalia-thema' ); ?>">
-			<?php wp_nav_menu( array( 'theme_location' => 'voetmenu', 'container' => false, 'depth' => 1 ) ); ?>
+			<?php
+			wp_nav_menu(
+				array(
+					'theme_location' => 'voetmenu',
+					'container'      => '',
+					'depth'          => 1,
+				)
+			);
+			?>
 		</nav>
 	<?php endif; ?>
 	<p>&copy; <?php echo esc_html( gmdate( 'Y' ) . ' ' . get_bloginfo( 'name' ) ); ?></p>

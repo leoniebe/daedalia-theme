@@ -1,0 +1,14 @@
+# Static analysis of the theme's own code (daedalia/ is the bundled plugin, analysed in its own repository).
+parameters:
+	level: 5
+	paths:
+		- .
+	excludePaths:
+		analyseAndScan:
+			- daedalia/ (?)
+			- vendor/
+			- node_modules/ (?)
+			- dist/ (?)
+	scanFiles:
+		- vendor/php-stubs/woocommerce-stubs/woocommerce-stubs.php
+		- tests/phpstan/daedalia-api.php

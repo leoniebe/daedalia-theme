@@ -1,3 +1,4 @@
 daedalia/
 node_modules/
 dist/
+vendor/
