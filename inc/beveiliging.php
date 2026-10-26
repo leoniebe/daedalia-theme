@@ -99,11 +99,85 @@ function daedalia_thema_login_error( $user ) {
 }
 
 /**
- * The address of the visitor, as the server sees it (no headers a visitor can choose).
+ * Cloudflare's addresses, as published on https://www.cloudflare.com/ips/ (26-10-2026). A request
+ * from one of them carries the visitor's address in CF-Connecting-IP.
+ */
+const DAEDALIA_THEMA_CLOUDFLARE = array(
+	'173.245.48.0/20',
+	'103.21.244.0/22',
+	'103.22.200.0/22',
+	'103.31.4.0/22',
+	'141.101.64.0/18',
+	'108.162.192.0/18',
+	'190.93.240.0/20',
+	'188.114.96.0/20',
+	'197.234.240.0/22',
+	'198.41.128.0/17',
+	'162.158.0.0/15',
+	'104.16.0.0/13',
+	'104.24.0.0/14',
+	'172.64.0.0/13',
+	'131.0.72.0/22',
+	'2400:cb00::/32',
+	'2606:4700::/32',
+	'2803:f800::/32',
+	'2405:b500::/32',
+	'2405:8100::/32',
+	'2a06:98c0::/29',
+	'2c0f:f248::/32',
+);
+
+/**
+ * The address of the visitor. That is the address the server sees, unless the request comes from
+ * a trusted proxy (Cloudflare): then the proxy's header. A visitor cannot choose it: the header
+ * counts only from the proxy's own addresses. Behind Cloudflare the server sees only Cloudflare,
+ * so without this every visitor would share a few addresses and the limiter would lock them all out.
  */
 function daedalia_thema_ip(): string {
-	$ip = isset( $_SERVER['REMOTE_ADDR'] ) ? filter_var( wp_unslash( $_SERVER['REMOTE_ADDR'] ), FILTER_VALIDATE_IP ) : false;
-	return is_string( $ip ) ? $ip : '';
+	$remote = isset( $_SERVER['REMOTE_ADDR'] ) ? filter_var( wp_unslash( $_SERVER['REMOTE_ADDR'] ), FILTER_VALIDATE_IP ) : false;
+	if ( ! is_string( $remote ) ) {
+		return '';
+	}
+
+	/**
+	 * Proxies whose header with the visitor's address is trusted.
+	 *
+	 * @param array<string, string> $proxies Address range (CIDR) => $_SERVER key of the header.
+	 */
+	$proxies = (array) apply_filters( 'daedalia_thema/proxies', array_fill_keys( DAEDALIA_THEMA_CLOUDFLARE, 'HTTP_CF_CONNECTING_IP' ) );
+	foreach ( $proxies as $range => $header ) {
+		if ( daedalia_thema_in_range( $remote, (string) $range ) ) {
+			$visitor = isset( $_SERVER[ $header ] ) ? filter_var( wp_unslash( $_SERVER[ $header ] ), FILTER_VALIDATE_IP ) : false; // phpcs:ignore WordPress.Security.ValidatedSanitizedInput.InputNotSanitized -- validated as an IP address.
+			return is_string( $visitor ) ? $visitor : $remote;
+		}
+	}
+	return $remote;
+}
+
+/**
+ * Whether an address lies in a range (CIDR, IPv4 or IPv6).
+ *
+ * @param string $ip    Address.
+ * @param string $range Range, e.g. 103.21.244.0/22.
+ */
+function daedalia_thema_in_range( string $ip, string $range ): bool {
+	$parts  = explode( '/', $range, 2 );
+	$packed = inet_pton( $ip );
+	$subnet = inet_pton( $parts[0] );
+	if ( false === $packed || false === $subnet || strlen( $packed ) !== strlen( $subnet ) ) {
+		return false;
+	}
+	$bits  = isset( $parts[1] ) ? (int) $parts[1] : strlen( $packed ) * 8;
+	$bytes = intdiv( $bits, 8 );
+	if ( substr( $packed, 0, $bytes ) !== substr( $subnet, 0, $bytes ) ) {
+		return false;
+	}
+	$rest = $bits % 8;
+	if ( 0 === $rest ) {
+		return true;
+	}
+	$mask = chr( ( 0xff << ( 8 - $rest ) ) & 0xff );
+	return ( $packed[ $bytes ] & $mask ) === ( $subnet[ $bytes ] & $mask );
 }
 
 /**

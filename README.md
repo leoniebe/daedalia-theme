@@ -7,8 +7,9 @@ Een licht, klassiek WordPress-thema voor de Daedalia-pagebuilder. Het thema doet
 - **CSS van het thema:** alleen een kleine reset en de skip link, samen minder dan 2 kB.
 - **Opgeschoond:** het thema laat het emoji-script en wp-embed weg. De bloklibrary en globale stijlen laden alleen op pagina's met blokken, en altijd bij winkelwagen, afrekenen en mijn account. Wil je een onderdeel houden? Gebruik het filter `daedalia_thema/afslanken`, bijvoorbeeld `add_filter( 'daedalia_thema/afslanken', fn( $d ) => [ 'blokken' => false ] + $d );`.
 - **Weergave › Daedalia-thema:** elk onderdeel staat los aan of uit, met uitleg. Wat iets kan breken staat standaard uit.
-  - **Afslanken:** emoji, wp-embed, blokstijlen alleen waar nodig, overbodige head-regels (RSD, WLW, korte link), geen WordPress-versie in de HTML, geen dashicons voor bezoekers, geen cart-fragments van WooCommerce, WooCommerce-CSS en -JS alleen op winkelpagina’s. Standaard uit: jQuery Migrate weg.
+  - **Afslanken:** emoji, wp-embed, blokstijlen alleen waar nodig, overbodige head-regels (RSD, WLW, korte link), geen WordPress-versie in de HTML, geen dashicons voor bezoekers, WooCommerce-CSS alleen op winkelpagina’s (via het filter `woocommerce_enqueue_styles`). De scripts van WooCommerce regelt Daedalia (Daedalia › Instellingen › WooCommerce). Standaard uit: jQuery Migrate weg.
   - **Beveiliging:** XML-RPC uit (403), de REST-gebruikerslijst dicht voor gasten, ?author=1 verraadt geen naam, één inlogmelding voor naam en wachtwoord, inlogpogingen beperkt (5 per naam of 20 per adres, dan 15 minuten), geen bestandsbewerker.
+    - Het adres van een bezoeker: wat de server ziet, of achter Cloudflare `CF-Connecting-IP`, maar alleen als het verzoek van een adres van Cloudflare komt (lijst van cloudflare.com/ips in `inc/beveiliging.php`). Andere proxy's voeg je toe met het filter `daedalia_thema/proxies` (bereik => `$_SERVER`-sleutel van de header). `php tests/ip.php` test het.
   - **Headers:** X-Content-Type-Options, Referrer-Policy, X-Frame-Options SAMEORIGIN (de editor van Daedalia blijft werken), Permissions-Policy (camera, microfoon, locatie uit; betalen niet). Standaard uit: CSP in meldmodus (filter `daedalia_thema/csp`) en HSTS (alleen op https).
 - **Paginatitel:** pagina’s zonder Daedalia-inhoud krijgen de titel als H1, tenzij Pagina-instellingen › Titel van het thema op Verbergen staat. In de editor nooit.
 - **WooCommerce:** het thema geeft ondersteuning aan, met zoom, lightbox en slider in de productgalerij. `woocommerce.php` is de terugval zolang er geen Daedalia-sjablonen voor de winkel zijn.
@@ -22,6 +23,8 @@ Daedalia draait op één van twee manieren. De code is dezelfde.
    - Bouw eerst de editor (`npm run build` in `daedalia/editor`).
    - `functions.php` laadt `daedalia/daedalia.php` en zet de constante `DAEDALIA_BUNDLED`.
 2. **Als plugin:** activeer de plugin Daedalia. Een actieve plugin laadt vóór het thema en wint. De meegeleverde kopie doet dan niets.
+
+**Versie:** `functions.php` noemt de oudste Daedalia waarmee het thema werkt (`DAEDALIA_THEMA_DAEDALIA_MIN`). `npm run bundel` weigert een oudere bron. Is de actieve plugin ouder dan dat minimum, of ouder dan de kopie in het thema, dan meldt het beheer dat (bijwerken, of de plugin uitzetten zodat de kopie draait).
 
 Onder Daedalia › Overzicht staat welke kopie draait. Zonder Daedalia werkt het thema nog wel, met een melding in het beheer.
 

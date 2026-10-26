@@ -60,6 +60,7 @@ function daedalia_thema_trim(): void {
 	}
 
 	add_action( 'wp_enqueue_scripts', 'daedalia_thema_trim_assets', 100 );
+	add_filter( 'woocommerce_enqueue_styles', 'daedalia_thema_shop_styles' );
 }
 add_action( 'init', 'daedalia_thema_trim' );
 
@@ -85,21 +86,19 @@ function daedalia_thema_trim_assets(): void {
 	if ( daedalia_thema_trims( 'dashicons' ) && ! is_user_logged_in() ) {
 		wp_dequeue_style( 'dashicons' );
 	}
+}
 
-	if ( function_exists( 'is_woocommerce' ) ) {
-		if ( daedalia_thema_trims( 'fragmenten' ) ) {
-			wp_dequeue_script( 'wc-cart-fragments' );
-		}
-		$shop = is_woocommerce() || is_cart() || is_checkout() || is_account_page();
-		if ( daedalia_thema_trims( 'winkelbestanden' ) && ! $shop ) {
-			foreach ( array( 'woocommerce-general', 'woocommerce-layout', 'woocommerce-smallscreen', 'wc-blocks-style', 'woocommerce-inline' ) as $handle ) {
-				wp_dequeue_style( $handle );
-			}
-			foreach ( array( 'woocommerce', 'wc-add-to-cart', 'jquery-blockui', 'js-cookie' ) as $handle ) {
-				wp_dequeue_script( $handle );
-			}
-		}
-	}
+/**
+ * WooCommerce's stylesheets only on its own pages, through its own filter. (A WooCommerce block
+ * loads its styles itself where it is used; WooCommerce's scripts are Daedalia's: Woo\Scripts.)
+ *
+ * @param array<string, array<string, mixed>> $styles WooCommerce's stylesheets.
+ * @return array<string, array<string, mixed>>
+ */
+function daedalia_thema_shop_styles( $styles ): array {
+	$shop = is_woocommerce() || is_cart() || is_checkout() || is_account_page();
+
+	return daedalia_thema_trims( 'winkelbestanden' ) && ! $shop ? array() : (array) $styles;
 }
 
 /**
