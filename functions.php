@@ -12,7 +12,11 @@
 
 defined( 'ABSPATH' ) || exit;
 
-define( 'DAEDALIA_THEMA_VERSION', '0.2.1' );
+define( 'DAEDALIA_THEMA_VERSION', '0.3.0' );
+
+// The oldest Daedalia this theme works with: its templates call Daedalia's API. npm run bundel
+// refuses an older one, and an older plugin gets a notice.
+define( 'DAEDALIA_THEMA_DAEDALIA_MIN', '0.9.1' );
 
 // Daedalia bundled in this theme, unless the plugin already runs.
 if ( ! defined( 'DAEDALIA_VERSION' ) && is_readable( __DIR__ . '/daedalia/daedalia.php' ) ) {
@@ -75,16 +79,43 @@ require_once __DIR__ . '/inc/afslanken.php';
 require_once __DIR__ . '/inc/beveiliging.php';
 
 /**
- * Without Daedalia the theme still works, but says what is missing.
+ * Without Daedalia the theme still works, but says what is missing; with a plugin that is too old,
+ * or older than the copy in the theme, it says that.
  */
 function daedalia_thema_notice(): void {
-	if ( daedalia_thema_has_builder() || ! current_user_can( 'install_plugins' ) ) {
+	if ( ! current_user_can( 'install_plugins' ) ) {
 		return;
 	}
-	printf(
-		'<div class="notice notice-warning"><p>%s</p></div>',
-		esc_html__( 'Het Daedalia-thema werkt samen met de Daedalia-pagebuilder. Zet de map daedalia/ in het thema (npm run bundel) of activeer de plugin Daedalia.', 'daedalia-thema' )
-	);
+	$message = daedalia_thema_has_builder()
+		? daedalia_thema_version_problem()
+		: __( 'Het Daedalia-thema werkt samen met de Daedalia-pagebuilder. Zet de map daedalia/ in het thema (npm run bundel) of activeer de plugin Daedalia.', 'daedalia-thema' );
+	if ( '' !== $message ) {
+		printf( '<div class="notice notice-warning"><p>%s</p></div>', esc_html( $message ) );
+	}
+}
+
+/**
+ * What is wrong with the version of the Daedalia that runs, or ''. The bundled copy is checked
+ * when it is bundled; an active plugin goes first, so it can be older than both.
+ */
+function daedalia_thema_version_problem(): string {
+	if ( defined( 'DAEDALIA_BUNDLED' ) || ! defined( 'DAEDALIA_VERSION' ) ) {
+		return '';
+	}
+	$bundled = is_readable( __DIR__ . '/daedalia/daedalia.php' ) ? (string) get_file_data( __DIR__ . '/daedalia/daedalia.php', array( 'version' => 'Version' ) )['version'] : '';
+
+	if ( version_compare( DAEDALIA_VERSION, DAEDALIA_THEMA_DAEDALIA_MIN, '<' ) ) {
+		return '' !== $bundled
+			/* translators: 1: running Daedalia version, 2: minimum version, 3: version bundled in the theme */
+			? sprintf( __( 'De plugin Daedalia %1$s is te oud voor dit thema (%2$s of nieuwer). Werk de plugin bij, of zet hem uit: dan draait Daedalia %3$s uit het thema.', 'daedalia-thema' ), DAEDALIA_VERSION, DAEDALIA_THEMA_DAEDALIA_MIN, $bundled )
+			/* translators: 1: running Daedalia version, 2: minimum version */
+			: sprintf( __( 'De plugin Daedalia %1$s is te oud voor dit thema (%2$s of nieuwer). Werk de plugin bij.', 'daedalia-thema' ), DAEDALIA_VERSION, DAEDALIA_THEMA_DAEDALIA_MIN );
+	}
+	if ( '' !== $bundled && version_compare( DAEDALIA_VERSION, $bundled, '<' ) ) {
+		/* translators: 1: plugin version, 2: version bundled in the theme */
+		return sprintf( __( 'De plugin Daedalia %1$s is ouder dan Daedalia %2$s in het thema, en een actieve plugin gaat voor. Werk de plugin bij of zet hem uit.', 'daedalia-thema' ), DAEDALIA_VERSION, $bundled );
+	}
+	return '';
 }
 add_action( 'admin_notices', 'daedalia_thema_notice' );
 

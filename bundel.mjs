@@ -16,6 +16,24 @@ if ( ! fs.existsSync( path.join( source, 'daedalia.php' ) ) ) {
 	process.exit( 1 );
 }
 
+// The theme names the oldest Daedalia it works with (functions.php); never bundle an older one.
+const header = ( file, pattern ) => ( fs.readFileSync( file, 'utf8' ).match( pattern ) || [] )[ 1 ] || '';
+const minimum = header( path.join( here, 'functions.php' ), /'DAEDALIA_THEMA_DAEDALIA_MIN',\s*'([\d.]+)'/ );
+const daedalia = header( path.join( source, 'daedalia.php' ), /Version:\s*([\d.]+)/ );
+const older = ( a, b ) => {
+	const [ x, y ] = [ a, b ].map( ( v ) => v.split( '.' ).map( Number ) );
+	for ( let i = 0; i < Math.max( x.length, y.length ); i++ ) {
+		if ( ( x[ i ] || 0 ) !== ( y[ i ] || 0 ) ) {
+			return ( x[ i ] || 0 ) < ( y[ i ] || 0 );
+		}
+	}
+	return false;
+};
+if ( ! minimum || ! daedalia || older( daedalia, minimum ) ) {
+	console.error( `Daedalia ${ daedalia || '?' } in ${ source } is ouder dan het thema nodig heeft (${ minimum || '?' }).` );
+	process.exit( 1 );
+}
+
 // Never in a bundle: repository files anywhere; at the top level what Daedalia's .gitattributes
 // marks export-ignore (editor sources, tests, developer tooling: the same as its release zip), and
 // what is not in its repository at all (Composer's vendor/, builds, docs).
@@ -57,7 +75,7 @@ for ( const needed of [ 'daedalia.php', 'src/autoload.php', 'assets/editor/edito
 		process.exit( 1 );
 	}
 }
-console.log( `Daedalia gekopieerd naar daedalia/ (${ files } bestanden).` );
+console.log( `Daedalia ${ daedalia } gekopieerd naar daedalia/ (${ files } bestanden; het thema vraagt ${ minimum } of nieuwer).` );
 
 if ( process.argv.includes( '--zonder-zip' ) ) {
 	process.exit( 0 );

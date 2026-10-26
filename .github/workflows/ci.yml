@@ -31,6 +31,8 @@ jobs:
         run: vendor/bin/phpcs -q
       - name: PHPStan
         run: vendor/bin/phpstan analyse --no-progress --memory-limit=2G
+      - name: Visitor address of the login limiter (behind Cloudflare)
+        run: php tests/ip.php
 
   render:
     name: Pages render (PHP ${{ matrix.php }}, WordPress 7.1)
@@ -82,3 +84,15 @@ jobs:
             grep -q 'daedalia-thema' /tmp/page.html
           done
           if [ -s /tmp/debug.log ]; then cat /tmp/debug.log; exit 1; fi
+      - name: A Daedalia plugin older than the theme needs gets a notice
+        run: |
+          mkdir -p /tmp/wordpress/wp-content/mu-plugins
+          cat > /tmp/wordpress/wp-content/mu-plugins/oude-daedalia.php <<'PHP'
+          <?php
+          namespace Daedalia;
+          define( 'DAEDALIA_VERSION', '0.1.0' );
+          final class Plugin { public static function instance(): self { return new self(); } }
+          PHP
+          $WP eval 'do_action( "admin_notices" );' --user=admin | tee /tmp/notice.html
+          grep -q 'Daedalia 0.1.0 is te oud' /tmp/notice.html
+          rm /tmp/wordpress/wp-content/mu-plugins/oude-daedalia.php

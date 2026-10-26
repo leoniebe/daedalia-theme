@@ -29,8 +29,7 @@ function daedalia_thema_parts(): array {
 		'head'            => $part( 'afslanken', __( 'Overbodige regels in de head weg', 'daedalia-thema' ), __( 'RSD, Windows Live Writer en de korte link.', 'daedalia-thema' ) ),
 		'versie'          => $part( 'afslanken', __( 'Geen WordPress-versie in de HTML', 'daedalia-thema' ), __( 'De generator-tag en het versienummer achter scripts en stijlen van WordPress zelf.', 'daedalia-thema' ) ),
 		'dashicons'       => $part( 'afslanken', __( 'Geen dashicons voor bezoekers', 'daedalia-thema' ), __( 'Het iconenlettertype van het beheer laadt alleen voor wie is ingelogd (de beheerbalk).', 'daedalia-thema' ) ),
-		'fragmenten'      => $part( 'afslanken', __( 'Geen cart-fragments van WooCommerce', 'daedalia-thema' ), __( 'Een verzoek op elke pagina om de winkelwagen bij te werken. De Mini-winkelwagen van Daedalia heeft het niet nodig.', 'daedalia-thema' ) ),
-		'winkelbestanden' => $part( 'afslanken', __( 'WooCommerce-bestanden alleen op winkelpagina’s', 'daedalia-thema' ), __( 'De CSS en JavaScript van WooCommerce laden niet op pagina’s zonder winkel.', 'daedalia-thema' ) ),
+		'winkelbestanden' => $part( 'afslanken', __( 'WooCommerce-CSS alleen op winkelpagina’s', 'daedalia-thema' ), __( 'De stijlen van WooCommerce laden niet op pagina’s zonder winkel. Zet het uit als een WooCommerce-shortcode op een gewone pagina staat. De scripts van WooCommerce regelt Daedalia (Daedalia › Instellingen › WooCommerce).', 'daedalia-thema' ) ),
 		'migrate'         => $part( 'afslanken', __( 'jQuery Migrate weg', 'daedalia-thema' ), __( 'Alleen oude plugins hebben dit nodig. Zet het aan en kijk of alles nog werkt.', 'daedalia-thema' ), false ),
 		// Beveiliging.
 		'xmlrpc'          => $part( 'beveiliging', __( 'XML-RPC uit', 'daedalia-thema' ), __( 'Een oude toegang voor apps die vaak voor inlogaanvallen wordt gebruikt. Zet het aan als je de Jetpack-app of een oude publicatie-app nodig hebt.', 'daedalia-thema' ) ),
