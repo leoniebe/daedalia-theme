@@ -20,10 +20,13 @@ function daedalia_thema_security(): void {
 		}
 		add_filter( 'xmlrpc_enabled', '__return_false' );
 		add_filter( 'xmlrpc_methods', static fn(): array => array() );
-		add_filter( 'wp_headers', static function ( array $headers ): array {
-			unset( $headers['X-Pingback'] );
-			return $headers;
-		} );
+		add_filter(
+			'wp_headers',
+			static function ( array $headers ): array {
+				unset( $headers['X-Pingback'] );
+				return $headers;
+			}
+		);
 		add_filter( 'pings_open', '__return_false', 20 );
 	}
 
@@ -99,7 +102,8 @@ function daedalia_thema_login_error( $user ) {
  * The address of the visitor, as the server sees it (no headers a visitor can choose).
  */
 function daedalia_thema_ip(): string {
-	return isset( $_SERVER['REMOTE_ADDR'] ) ? (string) preg_replace( '/[^0-9a-f:.]/i', '', (string) wp_unslash( $_SERVER['REMOTE_ADDR'] ) ) : '';
+	$ip = isset( $_SERVER['REMOTE_ADDR'] ) ? filter_var( wp_unslash( $_SERVER['REMOTE_ADDR'] ), FILTER_VALIDATE_IP ) : false;
+	return is_string( $ip ) ? $ip : '';
 }
 
 /**

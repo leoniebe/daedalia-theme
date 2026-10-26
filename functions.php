@@ -39,7 +39,13 @@ function daedalia_thema_setup(): void {
 	add_theme_support( 'responsive-embeds' );
 	add_theme_support( 'html5', array( 'search-form', 'comment-form', 'comment-list', 'gallery', 'caption', 'style', 'script', 'navigation-widgets' ) );
 	// Fallback only: Daedalia's own logo (Site-instellingen › Identiteit) comes first.
-	add_theme_support( 'custom-logo', array( 'flex-width' => true, 'flex-height' => true ) );
+	add_theme_support(
+		'custom-logo',
+		array(
+			'flex-width'  => true,
+			'flex-height' => true,
+		)
+	);
 
 	add_theme_support( 'woocommerce' );
 	add_theme_support( 'wc-product-gallery-zoom' );

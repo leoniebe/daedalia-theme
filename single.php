@@ -24,7 +24,13 @@ get_header();
 				<p><time datetime="<?php echo esc_attr( get_the_date( 'c' ) ); ?>"><?php echo esc_html( get_the_date() ); ?></time></p>
 				<?php
 				if ( has_post_thumbnail() ) {
-					the_post_thumbnail( 'large', array( 'loading' => 'eager', 'fetchpriority' => 'high' ) );
+					the_post_thumbnail(
+						'large',
+						array(
+							'loading'       => 'eager',
+							'fetchpriority' => 'high',
+						)
+					);
 				}
 				the_content();
 				wp_link_pages();

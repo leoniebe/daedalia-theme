@@ -26,13 +26,29 @@ defined( 'ABSPATH' ) || exit;
 	<a href="<?php echo esc_url( home_url( '/' ) ); ?>" rel="home"<?php echo is_front_page() ? ' aria-current="page"' : ''; ?>>
 		<?php
 		echo $daedalia_thema_logo
-			? wp_get_attachment_image( $daedalia_thema_logo, 'medium', false, array( 'alt' => $daedalia_thema_name, 'loading' => 'eager' ) )
+			? wp_get_attachment_image(
+				$daedalia_thema_logo,
+				'medium',
+				false,
+				array(
+					'alt'     => $daedalia_thema_name,
+					'loading' => 'eager',
+				)
+			)
 			: esc_html( $daedalia_thema_name );
 		?>
 	</a>
 	<?php if ( has_nav_menu( 'hoofdmenu' ) ) : ?>
 		<nav aria-label="<?php esc_attr_e( 'Hoofdmenu', 'daedalia-thema' ); ?>">
-			<?php wp_nav_menu( array( 'theme_location' => 'hoofdmenu', 'container' => false, 'depth' => 2 ) ); ?>
+			<?php
+			wp_nav_menu(
+				array(
+					'theme_location' => 'hoofdmenu',
+					'container'      => '',
+					'depth'          => 2,
+				)
+			);
+			?>
 		</nav>
 	<?php endif; ?>
 </header>
