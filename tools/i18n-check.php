@@ -16,13 +16,13 @@ $po        = Gettext\Translations::fromPoFile( $languages . 'nl_NL.po' );
 $problems  = array();
 
 foreach ( $pot as $t ) {
-	$found = $po->find( $t->getContext(), $t->getOriginal(), $t->getPlural() );
+	$found = $po->find( $t->getContext(), $t->getOriginal() );
 	if ( false === $found || '' === $found->getTranslation() || ( $t->hasPlural() && '' === implode( '', $found->getPluralTranslations() ) ) ) {
 		$problems[] = 'Not translated: ' . $t->getOriginal();
 	}
 }
 foreach ( $po as $t ) {
-	if ( false === $pot->find( $t->getContext(), $t->getOriginal(), $t->getPlural() ) ) {
+	if ( false === $pot->find( $t->getContext(), $t->getOriginal() ) ) {
 		$problems[] = 'Obsolete in the .po: ' . $t->getOriginal();
 	}
 }
@@ -36,7 +36,7 @@ foreach ( $po as $t ) {
 	// A plural is keyed by its singular alone; its forms follow each other, split by NUL.
 	$key  = ( $t->hasContext() ? $t->getContext() . "\4" : '' ) . $t->getOriginal();
 	$want = $t->getTranslation() . ( $t->hasPlural() ? "\0" . implode( "\0", $t->getPluralTranslations() ) : '' );
-	$in   = $mo->find( $t->getContext(), $t->getOriginal(), $t->getPlural() );
+	$in   = $mo->find( $t->getContext(), $t->getOriginal() );
 	if ( false === $in || $in->getTranslation() !== $t->getTranslation() ) {
 		$problems[] = 'The .mo is out of date (composer i18n:build): ' . $t->getOriginal();
 	}
