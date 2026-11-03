@@ -12,12 +12,23 @@
 		"phpstan/phpstan": "^2.1",
 		"szepeviktor/phpstan-wordpress": "^2.0",
 		"phpstan/extension-installer": "^1.4",
-		"php-stubs/woocommerce-stubs": "^11.2"
+		"php-stubs/woocommerce-stubs": "^11.2",
+		"wp-cli/i18n-command": "^2.6"
 	},
 	"scripts": {
 		"lint": "phpcs",
 		"fix": "phpcbf",
-		"analyse": "phpstan analyse"
+		"analyse": "phpstan analyse",
+		"i18n:pot": "wp i18n make-pot . languages/daedalia-thema.pot --domain=daedalia-thema --exclude=vendor,node_modules,tests,daedalia,dist,languages,tools --skip-audit",
+		"i18n:po": "wp i18n update-po languages/daedalia-thema.pot",
+		"i18n:build": [
+			"wp i18n make-mo languages",
+			"wp i18n make-php languages"
+		],
+		"i18n:check": [
+			"wp i18n make-pot . /tmp/daedalia-thema-check.pot --domain=daedalia-thema --exclude=vendor,node_modules,tests,daedalia,dist,languages,tools --skip-audit",
+			"@php tools/i18n-check.php /tmp/daedalia-thema-check.pot"
+		]
 	},
 	"config": {
 		"platform": {

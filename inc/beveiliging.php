@@ -93,7 +93,7 @@ function daedalia_thema_no_author_scan(): void {
  */
 function daedalia_thema_login_error( $user ) {
 	if ( is_wp_error( $user ) && array_intersect( $user->get_error_codes(), array( 'invalid_username', 'invalid_email', 'incorrect_password' ) ) ) {
-		return new WP_Error( 'daedalia_thema_inloggen', __( 'Inloggen is niet gelukt. Controleer je gebruikersnaam of e-mailadres en je wachtwoord.', 'daedalia-thema' ) );
+		return new WP_Error( 'daedalia_thema_inloggen', __( 'Login failed. Check your username or email address and your password.', 'daedalia-thema' ) );
 	}
 	return $user;
 }
@@ -218,7 +218,7 @@ function daedalia_thema_login_blocked( $user, $username ) {
 	}
 	$keys = daedalia_thema_login_keys( (string) $username );
 	if ( (int) get_transient( $keys['naam'] ) >= 5 || (int) get_transient( $keys['adres'] ) >= 20 ) {
-		return new WP_Error( 'daedalia_thema_te_vaak', __( 'Te veel mislukte pogingen. Probeer het over 15 minuten opnieuw.', 'daedalia-thema' ) );
+		return new WP_Error( 'daedalia_thema_te_vaak', __( 'Too many failed attempts. Try again in 15 minutes.', 'daedalia-thema' ) );
 	}
 	return $user;
 }

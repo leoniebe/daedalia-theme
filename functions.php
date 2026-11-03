@@ -58,8 +58,8 @@ function daedalia_thema_setup(): void {
 
 	register_nav_menus(
 		array(
-			'hoofdmenu' => __( 'Hoofdmenu', 'daedalia-thema' ),
-			'voetmenu'  => __( 'Menu in de footer', 'daedalia-thema' ),
+			'hoofdmenu' => __( 'Main menu', 'daedalia-thema' ),
+			'voetmenu'  => __( 'Footer menu', 'daedalia-thema' ),
 		)
 	);
 }
@@ -88,7 +88,7 @@ function daedalia_thema_notice(): void {
 	}
 	$message = daedalia_thema_has_builder()
 		? daedalia_thema_version_problem()
-		: __( 'Het Daedalia-thema werkt samen met de Daedalia-pagebuilder. Zet de map daedalia/ in het thema (npm run bundel) of activeer de plugin Daedalia.', 'daedalia-thema' );
+		: __( 'The Daedalia theme works with the Daedalia page builder. Put the daedalia/ folder in the theme (npm run bundel) or activate the Daedalia plugin.', 'daedalia-thema' );
 	if ( '' !== $message ) {
 		printf( '<div class="notice notice-warning"><p>%s</p></div>', esc_html( $message ) );
 	}
@@ -107,13 +107,13 @@ function daedalia_thema_version_problem(): string {
 	if ( version_compare( DAEDALIA_VERSION, DAEDALIA_THEMA_DAEDALIA_MIN, '<' ) ) {
 		return '' !== $bundled
 			/* translators: 1: running Daedalia version, 2: minimum version, 3: version bundled in the theme */
-			? sprintf( __( 'De plugin Daedalia %1$s is te oud voor dit thema (%2$s of nieuwer). Werk de plugin bij, of zet hem uit: dan draait Daedalia %3$s uit het thema.', 'daedalia-thema' ), DAEDALIA_VERSION, DAEDALIA_THEMA_DAEDALIA_MIN, $bundled )
+			? sprintf( __( 'The Daedalia plugin %1$s is too old for this theme (%2$s or newer). Update the plugin, or deactivate it: then Daedalia %3$s runs from the theme.', 'daedalia-thema' ), DAEDALIA_VERSION, DAEDALIA_THEMA_DAEDALIA_MIN, $bundled )
 			/* translators: 1: running Daedalia version, 2: minimum version */
-			: sprintf( __( 'De plugin Daedalia %1$s is te oud voor dit thema (%2$s of nieuwer). Werk de plugin bij.', 'daedalia-thema' ), DAEDALIA_VERSION, DAEDALIA_THEMA_DAEDALIA_MIN );
+			: sprintf( __( 'The Daedalia plugin %1$s is too old for this theme (%2$s or newer). Update the plugin.', 'daedalia-thema' ), DAEDALIA_VERSION, DAEDALIA_THEMA_DAEDALIA_MIN );
 	}
 	if ( '' !== $bundled && version_compare( DAEDALIA_VERSION, $bundled, '<' ) ) {
 		/* translators: 1: plugin version, 2: version bundled in the theme */
-		return sprintf( __( 'De plugin Daedalia %1$s is ouder dan Daedalia %2$s in het thema, en een actieve plugin gaat voor. Werk de plugin bij of zet hem uit.', 'daedalia-thema' ), DAEDALIA_VERSION, $bundled );
+		return sprintf( __( 'The Daedalia plugin %1$s is older than Daedalia %2$s in the theme, and an active plugin comes first. Update or deactivate the plugin.', 'daedalia-thema' ), DAEDALIA_VERSION, $bundled );
 	}
 	return '';
 }

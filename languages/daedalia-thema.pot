@@ -1,0 +1,312 @@
+# Copyright (C) 2026 Langemaire Websolutions
+# This file is distributed under the GPL-3.0-or-later.
+msgid ""
+msgstr ""
+"Project-Id-Version: Daedalia 0.3.0\n"
+"Report-Msgid-Bugs-To: https://wordpress.org/support/theme/daedalia-thema\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"POT-Creation-Date: 2026-11-03T09:54:11+00:00\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"X-Generator: WP-CLI 2.12.0\n"
+"X-Domain: daedalia-thema\n"
+
+#. Theme Name of the theme
+#: style.css:2
+msgid "Daedalia"
+msgstr ""
+
+#. Theme URI of the theme
+#. Author URI of the theme
+#: style.css:3
+#: style.css:9
+msgid "https://langemaire-websolutions.nl"
+msgstr ""
+
+#. Description of the theme
+#: style.css:4
+msgid "A lightweight theme for the Daedalia page builder. The theme itself does almost nothing: header, footer, pages, product pages and archives come from Daedalia, and colors, fonts and layout from Daedalia’s site settings. Daedalia can be bundled with the theme or run as a plugin."
+msgstr ""
+
+#. Author of the theme
+#: style.css:8
+msgid "Langemaire Websolutions"
+msgstr ""
+
+#: 404.php:13
+msgid "This page doesn’t exist (anymore)"
+msgstr ""
+
+#: 404.php:14
+msgid "Search for what you need, or go back to the homepage."
+msgstr ""
+
+#: 404.php:16
+msgid "Go to the homepage"
+msgstr ""
+
+#. translators: %s: number of comments.
+#: comments.php:21
+#, php-format
+msgid "%s comment"
+msgid_plural "%s comments"
+msgstr[0] ""
+msgstr[1] ""
+
+#: comments.php:39
+msgid "Comments"
+msgstr ""
+
+#: comments.php:46
+msgid "Comments are closed."
+msgstr ""
+
+#: footer.php:13
+#: functions.php:62
+msgid "Footer menu"
+msgstr ""
+
+#: functions.php:61
+#: header.php:42
+msgid "Main menu"
+msgstr ""
+
+#: functions.php:91
+msgid "The Daedalia theme works with the Daedalia page builder. Put the daedalia/ folder in the theme (npm run bundel) or activate the Daedalia plugin."
+msgstr ""
+
+#. translators: 1: running Daedalia version, 2: minimum version, 3: version bundled in the theme
+#: functions.php:110
+#, php-format
+msgid "The Daedalia plugin %1$s is too old for this theme (%2$s or newer). Update the plugin, or deactivate it: then Daedalia %3$s runs from the theme."
+msgstr ""
+
+#. translators: 1: running Daedalia version, 2: minimum version
+#: functions.php:112
+#, php-format
+msgid "The Daedalia plugin %1$s is too old for this theme (%2$s or newer). Update the plugin."
+msgstr ""
+
+#. translators: 1: plugin version, 2: version bundled in the theme
+#: functions.php:116
+#, php-format
+msgid "The Daedalia plugin %1$s is older than Daedalia %2$s in the theme, and an active plugin comes first. Update or deactivate the plugin."
+msgstr ""
+
+#: header.php:20
+msgid "Skip to content"
+msgstr ""
+
+#: inc/beveiliging.php:96
+msgid "Login failed. Check your username or email address and your password."
+msgstr ""
+
+#: inc/beveiliging.php:221
+msgid "Too many failed attempts. Try again in 15 minutes."
+msgstr ""
+
+#: inc/instellingen.php:26
+msgid "Remove the emoji script"
+msgstr ""
+
+#: inc/instellingen.php:26
+msgid "Browsers show emoji themselves; WordPress’s script and style aren’t needed."
+msgstr ""
+
+#: inc/instellingen.php:27
+msgid "Remove wp-embed"
+msgstr ""
+
+#: inc/instellingen.php:27
+msgid "The script for embedding this site in other sites."
+msgstr ""
+
+#: inc/instellingen.php:28
+msgid "Block styles only where there are blocks"
+msgstr ""
+
+#: inc/instellingen.php:28
+msgid "The block editor’s styles load only on pages with blocks, and on cart, checkout and my account."
+msgstr ""
+
+#: inc/instellingen.php:29
+msgid "Remove unneeded lines from the head"
+msgstr ""
+
+#: inc/instellingen.php:29
+msgid "RSD, Windows Live Writer and the shortlink."
+msgstr ""
+
+#: inc/instellingen.php:30
+msgid "No WordPress version in the HTML"
+msgstr ""
+
+#: inc/instellingen.php:30
+msgid "The generator tag and the version number after WordPress’s own scripts and styles."
+msgstr ""
+
+#: inc/instellingen.php:31
+msgid "No Dashicons for visitors"
+msgstr ""
+
+#: inc/instellingen.php:31
+msgid "The admin icon font loads only for logged-in users (the admin bar)."
+msgstr ""
+
+#: inc/instellingen.php:32
+msgid "WooCommerce CSS only on shop pages"
+msgstr ""
+
+#: inc/instellingen.php:32
+msgid "WooCommerce’s styles don’t load on pages without the shop. Turn this off if a WooCommerce shortcode is on a regular page. Daedalia handles WooCommerce’s scripts (Daedalia › Settings › WooCommerce)."
+msgstr ""
+
+#: inc/instellingen.php:33
+msgid "Remove jQuery Migrate"
+msgstr ""
+
+#: inc/instellingen.php:33
+msgid "Only old plugins need this. Turn it on and check that everything still works."
+msgstr ""
+
+#: inc/instellingen.php:35
+msgid "Turn off XML-RPC"
+msgstr ""
+
+#: inc/instellingen.php:35
+msgid "An old way in for apps that is often used for login attacks. Turn this off if you need the Jetpack app or an old publishing app."
+msgstr ""
+
+#: inc/instellingen.php:36
+msgid "User list closed to guests"
+msgstr ""
+
+#: inc/instellingen.php:36
+msgid "The REST route with the users (and so the usernames) is only for those allowed to see users."
+msgstr ""
+
+#: inc/instellingen.php:37
+msgid "Authors can’t be guessed"
+msgstr ""
+
+#: inc/instellingen.php:37
+msgid "An address like ?author=1 no longer gives away a username."
+msgstr ""
+
+#: inc/instellingen.php:38
+msgid "Login errors give nothing away"
+msgstr ""
+
+#: inc/instellingen.php:38
+msgid "One message for a wrong name and a wrong password."
+msgstr ""
+
+#: inc/instellingen.php:39
+msgid "Limit login attempts"
+msgstr ""
+
+#: inc/instellingen.php:39
+msgid "After 5 failed attempts with the same name, or 20 from the same address, wait 15 minutes."
+msgstr ""
+
+#: inc/instellingen.php:40
+msgid "Turn off the file editor"
+msgstr ""
+
+#: inc/instellingen.php:40
+msgid "Theme and plugin files can’t be edited in the admin."
+msgstr ""
+
+#: inc/instellingen.php:42
+msgid "X-Content-Type-Options"
+msgstr ""
+
+#: inc/instellingen.php:42
+msgid "The browser doesn’t guess the file type itself."
+msgstr ""
+
+#: inc/instellingen.php:43
+msgid "Referrer-Policy"
+msgstr ""
+
+#: inc/instellingen.php:43
+msgid "Other sites see only the domain a visitor comes from, not the whole link."
+msgstr ""
+
+#: inc/instellingen.php:44
+msgid "X-Frame-Options (this site only)"
+msgstr ""
+
+#: inc/instellingen.php:44
+msgid "Other sites can’t show this site in a frame (against clickjacking). Daedalia’s editor keeps working."
+msgstr ""
+
+#: inc/instellingen.php:45
+msgid "Permissions-Policy"
+msgstr ""
+
+#: inc/instellingen.php:45
+msgid "Camera, microphone and location are off for the page and embedded content. Payments still work."
+msgstr ""
+
+#: inc/instellingen.php:46
+msgid "Content-Security-Policy, report only"
+msgstr ""
+
+#: inc/instellingen.php:46
+msgid "A CSP in report mode: the browser reports in the console what a strict CSP would block, but blocks nothing."
+msgstr ""
+
+#: inc/instellingen.php:47
+msgid "Strict-Transport-Security (HSTS)"
+msgstr ""
+
+#: inc/instellingen.php:47
+msgid "Only on https. Browsers remember for a year that the site is https only; going back to http is then no longer possible."
+msgstr ""
+
+#: inc/instellingen.php:67
+#: inc/instellingen.php:102
+msgid "Daedalia theme"
+msgstr ""
+
+#: inc/instellingen.php:96
+msgid "Slimming down: load less"
+msgstr ""
+
+#: inc/instellingen.php:97
+msgid "Security"
+msgstr ""
+
+#: inc/instellingen.php:98
+msgid "Security headers"
+msgstr ""
+
+#: inc/instellingen.php:104
+msgid "Settings saved."
+msgstr ""
+
+#: inc/instellingen.php:106
+msgid "What the theme turns off, turns on or sends along. Each part stands alone: if something on your site stops working, turn off only that part. Parts that can break something are off by default."
+msgstr ""
+
+#: inc/instellingen.php:120
+msgid "(off by default)"
+msgstr ""
+
+#: inc/instellingen.php:126
+msgid "Save"
+msgstr ""
+
+#: parts/lijst.php:29
+msgid "Nothing found (yet)."
+msgstr ""
+
+#. translators: %s: search terms
+#: search.php:14
+#, php-format
+msgid "Search results for “%s”"
+msgstr ""

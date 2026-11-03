@@ -90,7 +90,7 @@ const stage = fs.mkdtempSync( path.join( dist, 'tmp-' ) );
 const root = path.join( stage, 'daedalia-thema' );
 const THEME_SKIP = [
 	'.git', 'node_modules', 'vendor', 'dist', 'tests', 'bundel.mjs', 'package.json', 'package-lock.json',
-	'composer.json', 'composer.lock', 'phpcs.xml.dist', 'phpstan.neon.dist',
+	'composer.json', 'composer.lock', 'phpcs.xml.dist', 'phpstan.neon.dist', 'tools',
 ];
 const copyTheme = ( from, to ) => {
 	fs.mkdirSync( to, { recursive: true } );

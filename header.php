@@ -17,7 +17,7 @@ defined( 'ABSPATH' ) || exit;
 </head>
 <body <?php body_class(); ?>>
 <?php wp_body_open(); ?>
-<a class="daedalia-thema-skiplink" href="#content"><?php esc_html_e( 'Naar de inhoud', 'daedalia-thema' ); ?></a>
+<a class="daedalia-thema-skiplink" href="#content"><?php esc_html_e( 'Skip to content', 'daedalia-thema' ); ?></a>
 <header class="daedalia-thema-kop">
 	<?php
 	$daedalia_thema_logo = daedalia_thema_has_builder() ? \Daedalia\Site_Identity::logo_id() : (int) get_theme_mod( 'custom_logo' );
@@ -39,7 +39,7 @@ defined( 'ABSPATH' ) || exit;
 		?>
 	</a>
 	<?php if ( has_nav_menu( 'hoofdmenu' ) ) : ?>
-		<nav aria-label="<?php esc_attr_e( 'Hoofdmenu', 'daedalia-thema' ); ?>">
+		<nav aria-label="<?php esc_attr_e( 'Main menu', 'daedalia-thema' ); ?>">
 			<?php
 			wp_nav_menu(
 				array(
