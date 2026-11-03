@@ -18,7 +18,7 @@ if ( post_password_required() ) {
 			<?php
 			$daedalia_thema_count = get_comments_number();
 			/* translators: %s: number of comments. */
-			echo esc_html( sprintf( _n( '%s reactie', '%s reacties', $daedalia_thema_count, 'daedalia-thema' ), number_format_i18n( $daedalia_thema_count ) ) );
+			echo esc_html( sprintf( _n( '%s comment', '%s comments', $daedalia_thema_count, 'daedalia-thema' ), number_format_i18n( $daedalia_thema_count ) ) );
 			?>
 		</h2>
 		<ol>
@@ -36,14 +36,14 @@ if ( post_password_required() ) {
 		the_comments_navigation();
 	else :
 		?>
-		<h2 id="daedalia-thema-reacties"><?php esc_html_e( 'Reacties', 'daedalia-thema' ); ?></h2>
+		<h2 id="daedalia-thema-reacties"><?php esc_html_e( 'Comments', 'daedalia-thema' ); ?></h2>
 		<?php
 	endif;
 
 	if ( comments_open() ) {
 		comment_form();
 	} else {
-		echo '<p>' . esc_html__( 'Reageren is gesloten.', 'daedalia-thema' ) . '</p>';
+		echo '<p>' . esc_html__( 'Comments are closed.', 'daedalia-thema' ) . '</p>';
 	}
 	?>
 </section>

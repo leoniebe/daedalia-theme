@@ -26,6 +26,6 @@ if ( have_posts() ) :
 	the_posts_pagination();
 else :
 	?>
-	<p><?php esc_html_e( 'Er is (nog) niets gevonden.', 'daedalia-thema' ); ?></p>
+	<p><?php esc_html_e( 'Nothing found (yet).', 'daedalia-thema' ); ?></p>
 	<?php
 endif;

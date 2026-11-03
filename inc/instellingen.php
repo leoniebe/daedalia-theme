@@ -23,28 +23,28 @@ function daedalia_thema_parts(): array {
 
 	return array(
 		// Afslanken.
-		'emoji'           => $part( 'afslanken', __( 'Emoji-script weg', 'daedalia-thema' ), __( 'Browsers tonen emoji zelf; het script en de stijl van WordPress zijn niet nodig.', 'daedalia-thema' ) ),
-		'embed'           => $part( 'afslanken', __( 'wp-embed weg', 'daedalia-thema' ), __( 'Het script om deze site in andere sites in te sluiten.', 'daedalia-thema' ) ),
-		'blokken'         => $part( 'afslanken', __( 'Blokstijlen alleen waar blokken staan', 'daedalia-thema' ), __( 'De stijlen van de blokeditor laden alleen op pagina’s met blokken, en bij winkelwagen, afrekenen en mijn account.', 'daedalia-thema' ) ),
-		'head'            => $part( 'afslanken', __( 'Overbodige regels in de head weg', 'daedalia-thema' ), __( 'RSD, Windows Live Writer en de korte link.', 'daedalia-thema' ) ),
-		'versie'          => $part( 'afslanken', __( 'Geen WordPress-versie in de HTML', 'daedalia-thema' ), __( 'De generator-tag en het versienummer achter scripts en stijlen van WordPress zelf.', 'daedalia-thema' ) ),
-		'dashicons'       => $part( 'afslanken', __( 'Geen dashicons voor bezoekers', 'daedalia-thema' ), __( 'Het iconenlettertype van het beheer laadt alleen voor wie is ingelogd (de beheerbalk).', 'daedalia-thema' ) ),
-		'winkelbestanden' => $part( 'afslanken', __( 'WooCommerce-CSS alleen op winkelpagina’s', 'daedalia-thema' ), __( 'De stijlen van WooCommerce laden niet op pagina’s zonder winkel. Zet het uit als een WooCommerce-shortcode op een gewone pagina staat. De scripts van WooCommerce regelt Daedalia (Daedalia › Instellingen › WooCommerce).', 'daedalia-thema' ) ),
-		'migrate'         => $part( 'afslanken', __( 'jQuery Migrate weg', 'daedalia-thema' ), __( 'Alleen oude plugins hebben dit nodig. Zet het aan en kijk of alles nog werkt.', 'daedalia-thema' ), false ),
+		'emoji'           => $part( 'afslanken', __( 'Remove the emoji script', 'daedalia-thema' ), __( 'Browsers show emoji themselves; WordPress’s script and style aren’t needed.', 'daedalia-thema' ) ),
+		'embed'           => $part( 'afslanken', __( 'Remove wp-embed', 'daedalia-thema' ), __( 'The script for embedding this site in other sites.', 'daedalia-thema' ) ),
+		'blokken'         => $part( 'afslanken', __( 'Block styles only where there are blocks', 'daedalia-thema' ), __( 'The block editor’s styles load only on pages with blocks, and on cart, checkout and my account.', 'daedalia-thema' ) ),
+		'head'            => $part( 'afslanken', __( 'Remove unneeded lines from the head', 'daedalia-thema' ), __( 'RSD, Windows Live Writer and the shortlink.', 'daedalia-thema' ) ),
+		'versie'          => $part( 'afslanken', __( 'No WordPress version in the HTML', 'daedalia-thema' ), __( 'The generator tag and the version number after WordPress’s own scripts and styles.', 'daedalia-thema' ) ),
+		'dashicons'       => $part( 'afslanken', __( 'No Dashicons for visitors', 'daedalia-thema' ), __( 'The admin icon font loads only for logged-in users (the admin bar).', 'daedalia-thema' ) ),
+		'winkelbestanden' => $part( 'afslanken', __( 'WooCommerce CSS only on shop pages', 'daedalia-thema' ), __( 'WooCommerce’s styles don’t load on pages without the shop. Turn this off if a WooCommerce shortcode is on a regular page. Daedalia handles WooCommerce’s scripts (Daedalia › Settings › WooCommerce).', 'daedalia-thema' ) ),
+		'migrate'         => $part( 'afslanken', __( 'Remove jQuery Migrate', 'daedalia-thema' ), __( 'Only old plugins need this. Turn it on and check that everything still works.', 'daedalia-thema' ), false ),
 		// Beveiliging.
-		'xmlrpc'          => $part( 'beveiliging', __( 'XML-RPC uit', 'daedalia-thema' ), __( 'Een oude toegang voor apps die vaak voor inlogaanvallen wordt gebruikt. Zet het aan als je de Jetpack-app of een oude publicatie-app nodig hebt.', 'daedalia-thema' ) ),
-		'gebruikers'      => $part( 'beveiliging', __( 'Gebruikerslijst dicht voor gasten', 'daedalia-thema' ), __( 'De REST-route met de gebruikers (en dus de gebruikersnamen) is alleen voor wie gebruikers mag zien.', 'daedalia-thema' ) ),
-		'auteurs'         => $part( 'beveiliging', __( 'Auteurs niet te raden', 'daedalia-thema' ), __( 'Een adres als ?author=1 verraadt geen gebruikersnaam meer.', 'daedalia-thema' ) ),
-		'inlogfouten'     => $part( 'beveiliging', __( 'Inlogfouten verraden niets', 'daedalia-thema' ), __( 'Eén melding voor een verkeerde naam en een verkeerd wachtwoord.', 'daedalia-thema' ) ),
-		'inlogpogingen'   => $part( 'beveiliging', __( 'Inlogpogingen beperken', 'daedalia-thema' ), __( 'Na 5 mislukte pogingen met dezelfde naam, of 20 vanaf hetzelfde adres, 15 minuten wachten.', 'daedalia-thema' ) ),
-		'bewerker'        => $part( 'beveiliging', __( 'Bestandsbewerker uit', 'daedalia-thema' ), __( 'Thema- en pluginbestanden zijn niet in het beheer te bewerken.', 'daedalia-thema' ) ),
+		'xmlrpc'          => $part( 'beveiliging', __( 'Turn off XML-RPC', 'daedalia-thema' ), __( 'An old way in for apps that is often used for login attacks. Turn this off if you need the Jetpack app or an old publishing app.', 'daedalia-thema' ) ),
+		'gebruikers'      => $part( 'beveiliging', __( 'User list closed to guests', 'daedalia-thema' ), __( 'The REST route with the users (and so the usernames) is only for those allowed to see users.', 'daedalia-thema' ) ),
+		'auteurs'         => $part( 'beveiliging', __( 'Authors can’t be guessed', 'daedalia-thema' ), __( 'An address like ?author=1 no longer gives away a username.', 'daedalia-thema' ) ),
+		'inlogfouten'     => $part( 'beveiliging', __( 'Login errors give nothing away', 'daedalia-thema' ), __( 'One message for a wrong name and a wrong password.', 'daedalia-thema' ) ),
+		'inlogpogingen'   => $part( 'beveiliging', __( 'Limit login attempts', 'daedalia-thema' ), __( 'After 5 failed attempts with the same name, or 20 from the same address, wait 15 minutes.', 'daedalia-thema' ) ),
+		'bewerker'        => $part( 'beveiliging', __( 'Turn off the file editor', 'daedalia-thema' ), __( 'Theme and plugin files can’t be edited in the admin.', 'daedalia-thema' ) ),
 		// Headers.
-		'nosniff'         => $part( 'headers', __( 'X-Content-Type-Options', 'daedalia-thema' ), __( 'De browser raadt het soort bestand niet zelf.', 'daedalia-thema' ) ),
-		'referrer'        => $part( 'headers', __( 'Referrer-Policy', 'daedalia-thema' ), __( 'Andere sites zien alleen het domein waar een bezoeker vandaan komt, niet de hele link.', 'daedalia-thema' ) ),
-		'frame'           => $part( 'headers', __( 'X-Frame-Options (alleen deze site)', 'daedalia-thema' ), __( 'Andere sites kunnen deze site niet in een frame tonen (tegen clickjacking). De editor van Daedalia blijft werken.', 'daedalia-thema' ) ),
-		'permissies'      => $part( 'headers', __( 'Permissions-Policy', 'daedalia-thema' ), __( 'Camera, microfoon en locatie staan uit voor de pagina en ingesloten inhoud. Betalen blijft mogelijk.', 'daedalia-thema' ) ),
-		'csp'             => $part( 'headers', __( 'Content-Security-Policy, alleen melden', 'daedalia-thema' ), __( 'Een CSP in meldmodus: de browser meldt in de console wat een strenge CSP zou tegenhouden, maar blokkeert niets.', 'daedalia-thema' ), false ),
-		'hsts'            => $part( 'headers', __( 'Strict-Transport-Security (HSTS)', 'daedalia-thema' ), __( 'Alleen op https. Browsers onthouden een jaar dat de site alleen via https mag; terug naar http kan dan niet meer.', 'daedalia-thema' ), false ),
+		'nosniff'         => $part( 'headers', __( 'X-Content-Type-Options', 'daedalia-thema' ), __( 'The browser doesn’t guess the file type itself.', 'daedalia-thema' ) ),
+		'referrer'        => $part( 'headers', __( 'Referrer-Policy', 'daedalia-thema' ), __( 'Other sites see only the domain a visitor comes from, not the whole link.', 'daedalia-thema' ) ),
+		'frame'           => $part( 'headers', __( 'X-Frame-Options (this site only)', 'daedalia-thema' ), __( 'Other sites can’t show this site in a frame (against clickjacking). Daedalia’s editor keeps working.', 'daedalia-thema' ) ),
+		'permissies'      => $part( 'headers', __( 'Permissions-Policy', 'daedalia-thema' ), __( 'Camera, microphone and location are off for the page and embedded content. Payments still work.', 'daedalia-thema' ) ),
+		'csp'             => $part( 'headers', __( 'Content-Security-Policy, report only', 'daedalia-thema' ), __( 'A CSP in report mode: the browser reports in the console what a strict CSP would block, but blocks nothing.', 'daedalia-thema' ), false ),
+		'hsts'            => $part( 'headers', __( 'Strict-Transport-Security (HSTS)', 'daedalia-thema' ), __( 'Only on https. Browsers remember for a year that the site is https only; going back to http is then no longer possible.', 'daedalia-thema' ), false ),
 	);
 }
 
@@ -64,7 +64,7 @@ function daedalia_thema_on( string $key ): bool {
  * The settings page.
  */
 function daedalia_thema_settings_menu(): void {
-	add_theme_page( __( 'Daedalia-thema', 'daedalia-thema' ), __( 'Daedalia-thema', 'daedalia-thema' ), 'manage_options', 'daedalia-thema', 'daedalia_thema_settings_page' );
+	add_theme_page( __( 'Daedalia theme', 'daedalia-thema' ), __( 'Daedalia theme', 'daedalia-thema' ), 'manage_options', 'daedalia-thema', 'daedalia_thema_settings_page' );
 }
 add_action( 'admin_menu', 'daedalia_thema_settings_menu' );
 
@@ -93,17 +93,17 @@ add_action( 'admin_init', 'daedalia_thema_settings_save' );
  */
 function daedalia_thema_settings_page(): void {
 	$groups = array(
-		'afslanken'   => __( 'Afslanken: minder laden', 'daedalia-thema' ),
-		'beveiliging' => __( 'Beveiliging', 'daedalia-thema' ),
-		'headers'     => __( 'Beveiligingsheaders', 'daedalia-thema' ),
+		'afslanken'   => __( 'Slimming down: load less', 'daedalia-thema' ),
+		'beveiliging' => __( 'Security', 'daedalia-thema' ),
+		'headers'     => __( 'Security headers', 'daedalia-thema' ),
 	);
 	?>
 	<div class="wrap">
-		<h1><?php esc_html_e( 'Daedalia-thema', 'daedalia-thema' ); ?></h1>
+		<h1><?php esc_html_e( 'Daedalia theme', 'daedalia-thema' ); ?></h1>
 		<?php if ( isset( $_GET['opgeslagen'] ) ) : // phpcs:ignore WordPress.Security.NonceVerification.Recommended -- only a notice. ?>
-			<div class="notice notice-success" role="status"><p><?php esc_html_e( 'Instellingen opgeslagen.', 'daedalia-thema' ); ?></p></div>
+			<div class="notice notice-success" role="status"><p><?php esc_html_e( 'Settings saved.', 'daedalia-thema' ); ?></p></div>
 		<?php endif; ?>
-		<p><?php esc_html_e( 'Wat het thema uitzet, aanzet of meestuurt. Elk onderdeel staat los: werkt iets op je site niet meer, zet dan alleen dat onderdeel uit. Onderdelen die iets kunnen breken, staan standaard uit.', 'daedalia-thema' ); ?></p>
+		<p><?php esc_html_e( 'What the theme turns off, turns on or sends along. Each part stands alone: if something on your site stops working, turn off only that part. Parts that can break something are off by default.', 'daedalia-thema' ); ?></p>
 		<form method="post">
 			<?php wp_nonce_field( 'daedalia_thema_instellingen' ); ?>
 			<?php foreach ( $groups as $group => $title ) : ?>
@@ -117,13 +117,13 @@ function daedalia_thema_settings_page(): void {
 						?>
 						<p>
 							<input type="checkbox" id="daedalia-thema-<?php echo esc_attr( $key ); ?>" name="daedalia_thema[<?php echo esc_attr( $key ); ?>]" value="1" aria-describedby="daedalia-thema-<?php echo esc_attr( $key ); ?>-uitleg" <?php checked( daedalia_thema_on( $key ) ); ?>>
-							<label for="daedalia-thema-<?php echo esc_attr( $key ); ?>"><strong><?php echo esc_html( $part['label'] ); ?></strong><?php echo $part['standaard'] ? '' : ' <em>' . esc_html__( '(standaard uit)', 'daedalia-thema' ) . '</em>'; ?></label><br>
+							<label for="daedalia-thema-<?php echo esc_attr( $key ); ?>"><strong><?php echo esc_html( $part['label'] ); ?></strong><?php echo $part['standaard'] ? '' : ' <em>' . esc_html__( '(off by default)', 'daedalia-thema' ) . '</em>'; ?></label><br>
 							<span class="description" id="daedalia-thema-<?php echo esc_attr( $key ); ?>-uitleg"><?php echo esc_html( $part['uitleg'] ); ?></span>
 						</p>
 					<?php endforeach; ?>
 				</fieldset>
 			<?php endforeach; ?>
-			<p><button type="submit" name="daedalia_thema_opslaan" value="1" class="button button-primary"><?php esc_html_e( 'Opslaan', 'daedalia-thema' ); ?></button></p>
+			<p><button type="submit" name="daedalia_thema_opslaan" value="1" class="button button-primary"><?php esc_html_e( 'Save', 'daedalia-thema' ); ?></button></p>
 		</form>
 	</div>
 	<?php
