@@ -154,6 +154,15 @@ function daedalia_thema_ip(): string {
 	return $remote;
 }
 
+// Daedalia's forms count their sends per visitor: give them the same address as the limiter, always.
+add_filter(
+	'daedalia/bezoeker_ip',
+	static function ( string $ip ): string {
+		$visitor = daedalia_thema_ip();
+		return '' !== $visitor ? $visitor : $ip;
+	}
+);
+
 /**
  * Whether an address lies in a range (CIDR, IPv4 or IPv6).
  *
