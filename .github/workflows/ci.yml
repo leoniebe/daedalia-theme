@@ -33,6 +33,8 @@ jobs:
         run: vendor/bin/phpstan analyse --no-progress --memory-limit=2G
       - name: Visitor address of the login limiter (behind Cloudflare)
         run: php tests/ip.php
+      - name: Updates only from a newer release of this repository
+        run: php tests/updates.php
       - name: Every string translated, the built files up to date
         run: composer i18n:check
 

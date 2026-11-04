@@ -8,7 +8,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "POT-Creation-Date: 2026-11-03T09:54:11+00:00\n"
-"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"PO-Revision-Date: 2026-11-04T13:05:16+00:00\n"
 "Language: nl_NL\n"
 "X-Generator: WP-CLI 2.12.0\n"
 "X-Domain: daedalia-thema\n"
@@ -20,11 +20,9 @@ msgid "Daedalia"
 msgstr "Daedalia"
 
 #. Theme URI of the theme
-#. Author URI of the theme
 #: style.css:3
-#: style.css:9
-msgid "https://langemaire-websolutions.nl"
-msgstr "https://langemaire-websolutions.nl"
+msgid "https://daedalia-builder.com"
+msgstr "https://daedalia-builder.com"
 
 #. Description of the theme
 #: style.css:4
@@ -35,6 +33,11 @@ msgstr "Een licht thema voor de Daedalia-pagebuilder. Het thema zelf doet bijna 
 #: style.css:8
 msgid "Langemaire Websolutions"
 msgstr "Langemaire Websolutions"
+
+#. Author URI of the theme
+#: style.css:9
+msgid "https://langemaire-websolutions.nl"
+msgstr "https://langemaire-websolutions.nl"
 
 #: 404.php:13
 msgid "This page doesn’t exist (anymore)"
@@ -74,24 +77,24 @@ msgstr "Menu in de footer"
 msgid "Main menu"
 msgstr "Hoofdmenu"
 
-#: functions.php:91
+#: functions.php:92
 msgid "The Daedalia theme works with the Daedalia page builder. Put the daedalia/ folder in the theme (npm run bundel) or activate the Daedalia plugin."
 msgstr "Het Daedalia-thema werkt samen met de Daedalia-pagebuilder. Zet de map daedalia/ in het thema (npm run bundel) of activeer de plugin Daedalia."
 
 #. translators: 1: running Daedalia version, 2: minimum version, 3: version bundled in the theme
-#: functions.php:110
+#: functions.php:111
 #, php-format
 msgid "The Daedalia plugin %1$s is too old for this theme (%2$s or newer). Update the plugin, or deactivate it: then Daedalia %3$s runs from the theme."
 msgstr "De plugin Daedalia %1$s is te oud voor dit thema (%2$s of nieuwer). Werk de plugin bij, of zet hem uit: dan draait Daedalia %3$s uit het thema."
 
 #. translators: 1: running Daedalia version, 2: minimum version
-#: functions.php:112
+#: functions.php:113
 #, php-format
 msgid "The Daedalia plugin %1$s is too old for this theme (%2$s or newer). Update the plugin."
 msgstr "De plugin Daedalia %1$s is te oud voor dit thema (%2$s of nieuwer). Werk de plugin bij."
 
 #. translators: 1: plugin version, 2: version bundled in the theme
-#: functions.php:116
+#: functions.php:117
 #, php-format
 msgid "The Daedalia plugin %1$s is older than Daedalia %2$s in the theme, and an active plugin comes first. Update or deactivate the plugin."
 msgstr "De plugin Daedalia %1$s is ouder dan Daedalia %2$s in het thema, en een actieve plugin gaat voor. Werk de plugin bij of zet hem uit."
@@ -104,7 +107,7 @@ msgstr "Naar de inhoud"
 msgid "Login failed. Check your username or email address and your password."
 msgstr "Inloggen is niet gelukt. Controleer je gebruikersnaam of e-mailadres en je wachtwoord."
 
-#: inc/beveiliging.php:221
+#: inc/beveiliging.php:230
 msgid "Too many failed attempts. Try again in 15 minutes."
 msgstr "Te veel mislukte pogingen. Probeer het over 15 minuten opnieuw."
 
