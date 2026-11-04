@@ -1,0 +1,31 @@
+# A release of the theme. Push a tag vX.Y.Z (the Version in style.css): the zip (git archive, so
+# without what .gitattributes keeps out) becomes the release's daedalia-thema.zip. Sites with the
+# theme see the update under Dashboard › Updates (inc/updates.php).
+name: Release
+
+on:
+  push:
+    tags: ['v*.*.*']
+
+permissions:
+  contents: write
+
+jobs:
+  release:
+    name: Zip and release
+    runs-on: ubuntu-24.04
+    steps:
+      - uses: actions/checkout@v4
+      - name: The tag and style.css name the same version
+        id: version
+        run: |
+          theme=$(sed -n 's/^Version: *//p' style.css | tr -d '[:space:]')
+          echo "style.css $theme, tag ${GITHUB_REF_NAME}"
+          [ "${GITHUB_REF_NAME}" = "v$theme" ]
+          echo "version=$theme" >> "$GITHUB_OUTPUT"
+      - name: Zip
+        run: git archive --format=zip --prefix=daedalia-thema/ -o daedalia-thema.zip HEAD
+      - name: Release
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: gh release create "${GITHUB_REF_NAME}" daedalia-thema.zip --title "Daedalia-thema ${{ steps.version.outputs.version }}" --generate-notes

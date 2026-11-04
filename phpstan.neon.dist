@@ -10,6 +10,7 @@ parameters:
 			- node_modules/ (?)
 			- dist/ (?)
 			- tests/ip.php # runs without WordPress, with its own stand-ins for wp_unslash() and friends
+			- tests/updates.php # the same, with its own add_filter()
 	scanFiles:
 		- vendor/php-stubs/woocommerce-stubs/woocommerce-stubs.php
 		- tests/phpstan/daedalia-api.php

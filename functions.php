@@ -77,6 +77,7 @@ add_action( 'wp_enqueue_scripts', 'daedalia_thema_assets', 5 );
 require_once __DIR__ . '/inc/instellingen.php';
 require_once __DIR__ . '/inc/afslanken.php';
 require_once __DIR__ . '/inc/beveiliging.php';
+require_once __DIR__ . '/inc/updates.php';
 
 /**
  * Without Daedalia the theme still works, but says what is missing; with a plugin that is too old,

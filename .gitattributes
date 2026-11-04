@@ -1,0 +1,16 @@
+# Line endings: LF in the repository.
+* text=auto eol=lf
+*.mo binary
+
+# Not in the theme zip (git archive, .github/workflows/release.yml): development and tests.
+/.github export-ignore
+/tests export-ignore
+/tools export-ignore
+/composer.json export-ignore
+/composer.lock export-ignore
+/package.json export-ignore
+/bundel.mjs export-ignore
+/phpcs.xml.dist export-ignore
+/phpstan.neon.dist export-ignore
+/.gitignore export-ignore
+/.gitattributes export-ignore
