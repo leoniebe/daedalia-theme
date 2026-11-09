@@ -9,7 +9,7 @@ defined( 'ABSPATH' ) || exit;
 
 if ( have_posts() ) :
 	?>
-	<ul class="daedalia-thema-lijst" role="list">
+	<ul class="daedalia-theme-list" role="list">
 		<?php
 		while ( have_posts() ) :
 			the_post();

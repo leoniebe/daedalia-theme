@@ -12,7 +12,7 @@ if ( post_password_required() ) {
 	return;
 }
 ?>
-<section id="comments" class="daedalia-thema-inhoud" aria-labelledby="daedalia-thema-reacties">
+<section id="comments" class="daedalia-theme-content" aria-labelledby="daedalia-thema-reacties">
 	<?php if ( have_comments() ) : ?>
 		<h2 id="daedalia-thema-reacties">
 			<?php

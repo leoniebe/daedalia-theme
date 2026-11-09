@@ -107,7 +107,7 @@ function daedalia_thema_settings_page(): void {
 		<form method="post">
 			<?php wp_nonce_field( 'daedalia_thema_instellingen' ); ?>
 			<?php foreach ( $groups as $group => $title ) : ?>
-				<fieldset class="daedalia-thema-groep">
+				<fieldset class="daedalia-theme-group">
 					<legend><h2><?php echo esc_html( $title ); ?></h2></legend>
 					<?php foreach ( daedalia_thema_parts() as $key => $part ) : ?>
 						<?php

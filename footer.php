@@ -8,7 +8,7 @@
 
 defined( 'ABSPATH' ) || exit;
 ?>
-<footer class="daedalia-thema-voet">
+<footer class="daedalia-theme-footer">
 	<?php if ( has_nav_menu( 'voetmenu' ) ) : ?>
 		<nav aria-label="<?php esc_attr_e( 'Footer menu', 'daedalia-thema' ); ?>">
 			<?php

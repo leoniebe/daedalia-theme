@@ -6,11 +6,11 @@ body{margin:0;min-height:100vh;display:flex;flex-direction:column}
 img,svg,video,canvas{display:block;max-width:100%;height:auto}
 input,button,textarea,select{font:inherit}
 :where(h1,h2,h3,h4,p,figure,blockquote){overflow-wrap:break-word}
-.daedalia-thema-skiplink{position:absolute;left:8px;top:-100px;z-index:100000;padding:12px 16px;border-radius:6px;background:#fff;color:#111;font-weight:600;text-decoration:none}
-.daedalia-thema-skiplink:focus{top:8px;outline:2px solid currentColor;outline-offset:2px}
+.daedalia-theme-skip-link{position:absolute;left:8px;top:-100px;z-index:100000;padding:12px 16px;border-radius:6px;background:#fff;color:#111;font-weight:600;text-decoration:none}
+.daedalia-theme-skip-link:focus{top:8px;outline:2px solid currentColor;outline-offset:2px}
 .screen-reader-text{position:absolute!important;width:1px;height:1px;margin:-1px;padding:0;overflow:hidden;clip-path:inset(50%);white-space:nowrap;border:0}
 .screen-reader-text:focus{position:static!important;width:auto;height:auto;margin:0;clip-path:none;white-space:normal}
-.daedalia-thema-kop,.daedalia-thema-voet,.daedalia-thema-inhoud{width:min(100% - 2 * var(--daedalia-zijmarge,16px),var(--daedalia-inhoud,1200px));margin-left:auto;margin-right:auto}
-.daedalia-thema-kop{display:flex;flex-wrap:wrap;gap:16px;align-items:center;justify-content:space-between;padding-top:16px;padding-bottom:16px}
-.daedalia-thema-kop ul,.daedalia-thema-voet ul{display:flex;flex-wrap:wrap;gap:8px 20px;margin:0;padding:0;list-style:none}
-.daedalia-thema-voet{padding-top:32px;padding-bottom:32px}
+.daedalia-theme-header,.daedalia-theme-footer,.daedalia-theme-content{width:min(100% - 2 * var(--daedalia-zijmarge,16px),var(--daedalia-inhoud,1200px));margin-left:auto;margin-right:auto}
+.daedalia-theme-header{display:flex;flex-wrap:wrap;gap:16px;align-items:center;justify-content:space-between;padding-top:16px;padding-bottom:16px}
+.daedalia-theme-header ul,.daedalia-theme-footer ul{display:flex;flex-wrap:wrap;gap:8px 20px;margin:0;padding:0;list-style:none}
+.daedalia-theme-footer{padding-top:32px;padding-bottom:32px}

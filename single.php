@@ -17,7 +17,7 @@ get_header();
 			the_content();
 		else :
 			?>
-			<article <?php post_class( 'daedalia-thema-inhoud' ); ?>>
+			<article <?php post_class( 'daedalia-theme-content' ); ?>>
 				<?php if ( daedalia_thema_show_title( get_the_ID() ) ) : ?>
 					<h1><?php the_title(); ?></h1>
 				<?php endif; ?>
