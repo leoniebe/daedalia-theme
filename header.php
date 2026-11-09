@@ -17,8 +17,8 @@ defined( 'ABSPATH' ) || exit;
 </head>
 <body <?php body_class(); ?>>
 <?php wp_body_open(); ?>
-<a class="daedalia-thema-skiplink" href="#content"><?php esc_html_e( 'Skip to content', 'daedalia-thema' ); ?></a>
-<header class="daedalia-thema-kop">
+<a class="daedalia-theme-skip-link" href="#content"><?php esc_html_e( 'Skip to content', 'daedalia-thema' ); ?></a>
+<header class="daedalia-theme-header">
 	<?php
 	$daedalia_thema_logo = daedalia_thema_has_builder() ? \Daedalia\Site_Identity::logo_id() : (int) get_theme_mod( 'custom_logo' );
 	$daedalia_thema_name = get_bloginfo( 'name' );

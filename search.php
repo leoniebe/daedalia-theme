@@ -9,7 +9,7 @@ defined( 'ABSPATH' ) || exit;
 
 get_header();
 ?>
-<main id="content" class="daedalia-thema-inhoud">
+<main id="content" class="daedalia-theme-content">
 	<?php /* translators: %s: search terms */ ?>
 	<h1><?php printf( esc_html__( 'Search results for “%s”', 'daedalia-thema' ), esc_html( get_search_query() ) ); ?></h1>
 	<?php get_search_form(); ?>

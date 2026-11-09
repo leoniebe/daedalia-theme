@@ -10,7 +10,7 @@ defined( 'ABSPATH' ) || exit;
 
 get_header();
 ?>
-<main id="content" class="daedalia-thema-inhoud daedalia-thema-winkel">
+<main id="content" class="daedalia-theme-content daedalia-theme-shop">
 	<?php woocommerce_content(); ?>
 </main>
 <?php
